@@ -25,7 +25,7 @@
                 <img src="images/header_logo.jpg" alt="header-logo">
             </div>
             <div class="header-text">
-                <h3>Petshop Brekekemeke</h2>
+                <h3>Nemo’s Paradise</h3>
                     <p><i class="bi bi-envelope"></i>email: random@gmail.com</p>
                     <p><i class="bi bi-telephone"></i>tel: +420 666 333 420</p>
                     <p><i class="bi bi-house-door"></i>adresa: Praha 9</p>
@@ -38,7 +38,7 @@
                 <li><a href="nase-nabidka.html">Naše nabídka</a></li>
                 <li><a href="cenik.html">Ceník</a></li>
                 <li><a href="kontaktni-formular.html">Kontaktní formulář</a></li>
-                <li><a href="#">Objednávka</a></li>
+                <li><a href="objednavka.html">Objednávka</a></li>
             </ul>
         </section>
         <!-------------- MAIN -------------------->
@@ -46,42 +46,42 @@
             <div class="formular-container">
                 <h3>Kontaktujte nás:</h3>
                 <form>
-                    <label for="fname">Name:</label><br>
+                    <label for="name">Jméno:</label><br>
                     <input type="text" id="name" name="name" placeholder="John Doe"><br>
 
-                    <label for="fname">Email:</label><br>
+                    <label for="email">Email:</label><br>
                     <input type="text" id="email" name="email" placeholder="John@example.com"><br>
 
-                    <label for="lname">Phone:</label><br>
+                    <label for="phone">Mobil:</label><br>
                     <input type="text" id="phone" name="phone" placeholder="123-456-789"><br>
 
                     <form>
-                          <input type="radio" id="email-radio" value="email1">
+                          <input type="radio" name="radio" id="email-radio" value="email1">
                           <label for="email-radio">E-mail</label><br>
-                          <input type="radio" id="phone-radio" value="phone1">
-                          <label for="phone-radio">Phone</label><br>
+                          <input type="radio" name="radio" id="phone-radio" value="phone1">
+                          <label for="phone-radio">Mobil</label><br>
                     </form>
-                    <label for="kraj">Question for:</label>
+                    <label for="druh_produktu">Otázka na:</label>
                     <form>
-                        <select id="drop" name="kraj" size="1">
+                        <select id="drop" name="druh_produktu" size="1">
                             <option selected value="vychozi">- Vase otazka na -</option>
-                            <option value="pes">Psy</option>
-                            <option value="kocka">Kočky</option>
-                            <option value="kralik">Králíky</option>
-                            <option value="andulka">Andulky</option>
+                            <option value="ryby">Ryby</option>
+                            <option value="rostliny">Rostliny</option>
+                            <option value="krmeni">Krmení pro rybičky</option>
+                            <option value="akvarka">Akvárka</option>
                         </select>
                     </form>
                 </br>
                     <textarea rows="4" cols="50" name="comment" form="usrform">
                     </textarea>
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Odeslat">
                 </form>
             </div>
         </section>
         <!-------------- FOOTER -------------------->
         <section id="footer">
-            <p>© 2022 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, quam.</p>
+            <p>© 2022 Szczepanik</p>
             <audio controls>
                 <source src="sounds/delfin.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.

@@ -50,7 +50,7 @@ h3{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2%;
+    padding-right: 2%;
 }
 /*----------------------------------- NAVBAR ---------------------------------*/
 #navbar{
@@ -98,18 +98,32 @@ h3{
     padding: 7% 15%;
     max-width:30vw;
 }
-
+/*--------------------------------------- OBJEDNÁVKA ---------------------------*/
+#order{
+        grid-area: m;
+        background-color: #DA0037;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+    color: white;
+}
 /*--------------------------------------- TABULKA ---------------------------*/
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
-  
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+  }
+  .cenik{
+    margin: 0% 2%;
   }
 /*--------------------------------------- FORMULÁŘ ---------------------------*/
 .formular-container{
