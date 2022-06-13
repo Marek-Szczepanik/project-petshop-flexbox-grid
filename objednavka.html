@@ -20,7 +20,57 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <!-------------- SCRIPTY -------------------->
     <script>
-        
+        function aktualni_cena(){
+            //Vstupni hodnoty + cena
+            var krmivo_cena = document.f_1.vyber_krmiva.value;
+            var krmivo_pocet = document.f_1.pocet_kg.value;
+            var aktualni_cena = krmivo_cena * krmivo_pocet;
+            document.f_1.aktualni_cena.value = aktualni_cena;
+            var sum = parseInt(aktualni_cena);
+
+            // Checkboxy
+            if(document.getElementById("bio").checked){
+                sum = parseFloat(sum * 1.3);
+            }
+            if(document.getElementById("extra").checked){
+                sum = parseFloat(sum * 1.1);
+            }
+            if (document.getElementById("nekvalita").checked){
+                sum = parseFloat(sum * 0.85);
+            }
+            if(document.getElementById("darek").checked){
+                sum = parseFloat(sum+500);
+            }
+            // Radio
+            if(document.getElementById("firemni_kuryr").checked){
+                sum = sum * 1.1;
+            }
+            else if(document.getElementById("ceska_posta").checked){
+                sum = sum + 250;
+            }
+            document.f_1.vysledna_cena.value = Math.round(sum,2);
+        }
+        function porovnej(){
+            var pozadovanaCena = document.f_1.vysledna_cena.value;
+            var mojeNabidka = document.f_1.moje_cena.value;
+            if (mojeNabidka >= pozadovanaCena){
+                document.querySelector(".show").classList.remove("bg-danger");
+                document.querySelector(".show").classList.add("bg-success");
+                document.querySelector(".show-text").innerHTML="Máš na to! To bude pořádná hostina!"
+            }
+            else{
+                document.querySelector(".show").classList.remove("bg-success");
+                document.querySelector(".show").classList.add("bg-danger");
+                document.querySelector(".show-text").innerHTML="Jsi až moc chudý! Chudáci zvířatka :("
+            }
+        }
+        function hlidac(){
+            with(event)
+            if (keyCode < 48 || (keyCode > 57 && keyCode < 65) || (keyCode > 90 && keyCode < 97) || keyCode > 122)
+            returnValue=false;
+        }
+
+
     </script>
 </head>
 
@@ -35,7 +85,8 @@
                 <h3>Nemo’s Paradises</h3>
                 <p><i class="bi bi-envelope"></i>email: random@gmail.com<br>
                     <i class="bi bi-telephone"></i>tel: +420 666 333 420<br>
-                    <i class="bi bi-house-door"></i>adresa: Praha 9</p>
+                    <i class="bi bi-house-door"></i>adresa: Praha 9
+                </p>
             </div>
         </section>
         <!-------------- NAVBAR -------------------->
@@ -50,8 +101,81 @@
         </section>
         <!-------------- MAIN -------------------->
         <section id="order">
-            <h3 class="text-center">Objednávkový formulář</h3>
+            <h3 class="text-center py-5">Objednávkový formulář</h3>
+            <div class="container">
+            <form name="f_1">
+                <div class="row">
+                    <div class="col-md-4" onclick="aktualni_cena()">
+                        <label for="vyber_krmiva">Typ krmiva:</label>
+                        <select name="vyber_krmiva" class="form-control" placeholder="Typ krmiva">
+                            <option value="150">Psí žrádlo</option>
+                            <option value="120">Kočičí žrádlo</option>
+                            <option value="50">Žrádlo pro rybičky</option>
+                            <option value="800">Žrádlo pro tygra</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4" onchange="aktualni_cena()">
+                        <label for="pocet_kg">Počet kg:</label>
+                        <input type="text" name="pocet_kg" class="form-control" placeholder="Počet Kg" value="1">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="aktualni_cena">Základní cena krmiva:</label>
+                        <input type="text" name="aktualni_cena" class="form-control" placeholder="Aktuální cena" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" onclick="aktualni_cena()">
+                        <label for="vlasnosti_bio">Bio kvalita:</label>
+                        <input type="checkbox"  id="bio" name="vlasnosti_bio" class="form-control" >
+                    </div>
+                    <div class="col" onclick="aktualni_cena()">
+                        <label for="vlasnosti_extra">Extra premium kvalita:</label>
+                        <input type="checkbox"  id="extra"name="vlasnosti_extra" class="form-control" >
+                    </div>
+                    <div class="col" onclick="aktualni_cena()">
+                        <label for="vlasnosti_nekvalita">Extra nekvalita pro chudé:</label>
+                        <input type="checkbox" id="nekvalita" name="vlasnosti_nekvalita" class="form-control">
+                    </div>
+                    <div class="col" onclick="aktualni_cena()">
+                        <label for="vlasnosti_darek">Dárkové balení:</label>
+                        <input type="checkbox" id="darek" name="vlasnosti_darek" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" onclick="aktualni_cena()">
+                        <label for="typ_dopravy">Osobní odběr</label>
+                        <input type="radio" id="osobni_odber" name="doprava" class="form-control" value="1">
 
+                        <label for="typ_dopravy">Firemní kurýr:</label>
+                        <input type="radio" id="firemni_kuryr" name="doprava" class="form-control" >
+
+                        <label for="typ_dopravy">Česká pošta:</label>
+                        <input type="radio" id="ceska_posta" name="doprava" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="vysledna_cena">Výsledná cena:</label>
+                        <input type="text" name="vysledna_cena" class="form-control" placeholder="Výsledná cena">
+                    </div>
+                    <div class="col">
+                        <label for="moje_cena">Má částka k utracení:</label>
+                        <input type="text" name="moje_cena" class="form-control show" placeholder="Moje nabídka">
+                    </div>
+                    <div class="col">
+                        <label for="confirm" class="show-text">Tlačítko k porovnání:</label>
+                        <button type="button" name="confirm" class="btn btn-light btn-lg btn-block" onclick="porovnej()">Porovnej</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" onkeypress="hlidac()">
+                        <label for="jmeno_email">Kontaktní email</label>
+                        <input type="email" name="jmeno_email" class="form-control" placeholder="@gmail.com">
+                    </div>
+                </div>
+            </div>
+
+            </form>
         </section>
         <!-------------- FOOTER -------------------->
         <section id="footer">
